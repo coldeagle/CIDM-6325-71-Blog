@@ -1,11 +1,24 @@
-<!-- templates/home.html -->
 {% extends "base.html" %}
-
 {% block content %}
-{% for post in post_list %}
-    <div class="post-entry">
-        <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-        <p>{{ post.body }}</p>
+<div class="row">
+    <div class="col-2 pr-4 mr-4">
+        <details>
+            <summary>
+                Blog Posts
+            </summary>
+            <p>Click <a href="{% url 'posts' %}">Here</a> to find our latest blog posts</p>
+        </details>
+
+        <details>
+            <summary>Create a Post</summary>
+            Click <a href="/admin/blog/post/add/">here</a> to crete a new post</p>
+        </details>
     </div>
-{% endfor %}
+    <div class="col-10 text-center">
+        <h1>Welcome!</h1>
+        <p>
+            Welcome to the Salesforce blog spot! Glad you're here, and I hope you'll learn some interesting facts about Salesforce!
+        </p>
+    </div>
+</div>
 {% endblock content %}

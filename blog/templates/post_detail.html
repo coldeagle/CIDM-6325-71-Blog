@@ -1,8 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="post-entry">
-    <h2>{{ object.title }}</h2>
-    <p>{{ object.body }}</p>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <article class="blog-post">
+                    <h2 class="blog-post-title mb-1">{{ object.title }}</h2>
+                    <p class="blog-post-meta mb-1">
+                        By {{ object.author }}
+                    </p>
+                    <hr>
+                    <section class="row">
+                        <figure class="col-4">
+                            <img src="{{ post.cover.url}}" class="img-fluid bg-dark" />
+                        </figure>
+                        <div class="col-8">
+                            {{ object.body }}
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

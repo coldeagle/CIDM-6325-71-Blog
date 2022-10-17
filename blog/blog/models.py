@@ -1,4 +1,3 @@
-# blog/models.py
 from django.db import models
 from django.urls import reverse
 
@@ -10,6 +9,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
     )
     body = models.TextField()
+    cover = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.title
