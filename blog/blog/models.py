@@ -9,10 +9,17 @@ class Post(models.Model):
         on_delete=models.CASCADE,
     )
     body = models.TextField()
-    cover = models.ImageField(upload_to='images/')
+    cover = models.ImageField(upload_to='images/', blank=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={"pk": self.pk})
+
+    @property
+    def get_cover_url(self):
+        if self.cover and hasattr(self.cover, 'url'):
+            return self.cover.url
+        else:
+            return '/static/images/parchment.png'

@@ -6,16 +6,18 @@
             <div class="col">
                 <article class="blog-post">
                     <h2 class="blog-post-title mb-1">{{ object.title }}</h2>
+                    <hr>
                     <p class="blog-post-meta mb-1">
-                        By {{ object.author }}
+                        By {{ object.author }}<br/>
+                        <a href="{% url 'post_edit' object.pk %}">Edit Blog Post</a>&nbsp;|&nbsp;<a href="{% url 'post_delete' object.pk %}">Delete Blog Post</a>
                     </p>
                     <hr>
                     <section class="row">
                         <figure class="col-4">
-                            <img src="{{ post.cover.url}}" class="img-fluid bg-dark" />
+                            <img src="{{ object.get_cover_url}}" class="img-fluid bg-dark" />
                         </figure>
                         <div class="col-8">
-                            {{ object.body }}
+                            {{ object.body | safe}}
                         </div>
                     </section>
                 </article>
